@@ -19,6 +19,8 @@ let package = Package(
             .product(name: "FeatherCore", package: "feather-core"),
             .product(name: "UAParserSwift", package: "UAParserSwift"),
             .product(name: "ALanguageParser", package: "ALanguageParser"),
+        ], resources: [
+            .copy("Bundle"),
         ]),
         .testTarget(name: "AnalyticsModuleTests", dependencies: [
             .target(name: "AnalyticsModule"),

@@ -20,12 +20,9 @@ final class AnalyticsModule: ViperModule {
     }
 
     static var bundleUrl: URL? {
-        URL(fileURLWithPath: Application.Paths.base)
-            .appendingPathComponent("Sources")
-            .appendingPathComponent("App")
-            .appendingPathComponent("Modules")
-            .appendingPathComponent("Analytics")
-            .appendingPathComponent("Bundle")
+        Bundle.module.bundleURL
+            .appendingPathComponent("Contents")
+            .appendingPathComponent("Resources")
     }
 
     func boot(_ app: Application) throws {
