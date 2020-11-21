@@ -23,6 +23,7 @@ final class AnalyticsModule: ViperModule {
         Bundle.module.bundleURL
             .appendingPathComponent("Contents")
             .appendingPathComponent("Resources")
+            .appendingPathComponent("Bundle")
     }
 
     func boot(_ app: Application) throws {
