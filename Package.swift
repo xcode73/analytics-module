@@ -11,7 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/binarybirds/feather-core", from: "1.0.0-beta"),
-        .package(url: "https://github.com/binarybirds/UAParserSwift", from: "1.2.1"),
+        .package(url: "https://github.com/malcommac/UAParserSwift", from: "1.2.1"),
         .package(name: "ALanguageParser", url: "https://github.com/matsoftware/accept-language-parser", from: "1.0.0"),
     ],
     targets: [

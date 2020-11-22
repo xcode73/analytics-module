@@ -38,21 +38,12 @@
         }
       },
       {
-        "package": "content-api",
-        "repositoryURL": "https://github.com/binarybirds/content-api",
-        "state": {
-          "branch": null,
-          "revision": "c1971a7617b6dbd9ee6b2f6abc54c883ed617063",
-          "version": "1.0.5"
-        }
-      },
-      {
         "package": "feather-core",
         "repositoryURL": "https://github.com/binarybirds/feather-core",
         "state": {
           "branch": null,
-          "revision": "ec4412f136f37fe69e0efd876aaa78e390686f2e",
-          "version": "1.0.0-beta.10"
+          "revision": "f216d47612ff366656698e466bf6c70db25be7ac",
+          "version": "1.0.0-beta.12"
         }
       },
       {
@@ -74,24 +65,6 @@
         }
       },
       {
-        "package": "jwt",
-        "repositoryURL": "https://github.com/vapor/jwt",
-        "state": {
-          "branch": null,
-          "revision": "46eddb526fa70fd9d765a3bdffac73b2be487cfc",
-          "version": "4.0.0"
-        }
-      },
-      {
-        "package": "jwt-kit",
-        "repositoryURL": "https://github.com/vapor/jwt-kit.git",
-        "state": {
-          "branch": null,
-          "revision": "6055fe8439769aa3646a3c797d573ce7305849c8",
-          "version": "4.2.0"
-        }
-      },
-      {
         "package": "leaf",
         "repositoryURL": "https://github.com/vapor/leaf",
         "state": {
@@ -107,24 +80,6 @@
           "branch": null,
           "revision": "8b965e6e2eadfe5914ea133669368aceb2b89ccb",
           "version": "1.0.0-tau.1.1"
-        }
-      },
-      {
-        "package": "liquid",
-        "repositoryURL": "https://github.com/binarybirds/liquid",
-        "state": {
-          "branch": null,
-          "revision": "daf9dee3a5aa7e056603a454c183999a3c0fde92",
-          "version": "1.1.0"
-        }
-      },
-      {
-        "package": "liquid-kit",
-        "repositoryURL": "https://github.com/binarybirds/liquid-kit.git",
-        "state": {
-          "branch": null,
-          "revision": "7784afbeed9a86f672f99453dd0c80941000c323",
-          "version": "1.1.1"
         }
       },
       {
@@ -228,10 +183,10 @@
       },
       {
         "package": "UAParserSwift",
-        "repositoryURL": "https://github.com/binarybirds/UAParserSwift",
+        "repositoryURL": "https://github.com/malcommac/UAParserSwift",
         "state": {
           "branch": null,
-          "revision": "6c378ca652c3c01d71efc167d47e0517be86bf9f",
+          "revision": "a8057c7cff60db2cdf31d0a0a68ce430754ab64e",
           "version": "1.2.1"
         }
       },
@@ -258,8 +213,8 @@
         "repositoryURL": "https://github.com/binarybirds/viper-kit",
         "state": {
           "branch": null,
-          "revision": "56f1404e64ede213c399f5a33aaa60b1ff5adddf",
-          "version": "1.5.0-beta.6"
+          "revision": "dc4598b3a2bf882af7759ddb54081c9f84bbd93e",
+          "version": "1.5.0-beta.7"
         }
       },
       {
