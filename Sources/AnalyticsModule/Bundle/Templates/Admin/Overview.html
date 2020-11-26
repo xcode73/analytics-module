@@ -3,15 +3,14 @@
 #enddefine
 #define(body):
 
-<div id="analytics-overview" class="wrapper w m:bottom:l">
+<div id="analytics-overview" class="content t:center">
     <div class="m">
-
-        <h2>Metrics</h2>
-        <div class="g2 g:gap:l center">
-            <div class="g:col2 bg2 p:l br:s border1">
-                <span>#svg("eye", class: "block w64")</span>
-                <h3>Total page views</h3>
-                <p class="h1">#(totalPageViews)</p>
+        <h2 class="m:t:zero">Metrics</h2>
+        <div class="g2 g:gap:l t:center">
+            <div class="g:col2 c:background:secondary p:l r:s">
+                <span>#svg("eye", class: "block s64 m:h:auto c:link:primary")</span>
+                <h3 class="m:t">Total page views</h3>
+                <p class="h1 m:t:zero">#(totalPageViews)</p>
             </div>
 
             #for(metric in metrics):
