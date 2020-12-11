@@ -1,27 +1,50 @@
-#define(toolbarCenter):
-    Analytics overview
+#define(css):
+\#analytics-overview svg {
+    color: \#fa3ebe;
+}
+\#analytics-overview .bar-chart {
+    background: \#21a9ff;
+    background: -webkit-linear-gradient(to right, \#12c2e9, \#21a9ff);
+    background: linear-gradient(to right, \#12c2e9, \#21a9ff);
+    color: \#000;
+}
+@media (prefers-color-scheme: dark) {
+    \#analytics-overview svg {
+        color: \#21a9ff;
+    }
+    \#analytics-overview .bar-chart {
+        background: \#f80759;
+        background: -webkit-linear-gradient(to right, \#f80759, \#fa3ebe);
+        background: linear-gradient(to right, \#f80759, \#fa3ebe);
+        color: \#fff;
+    }
+}
 #enddefine
+
+#define(toolbarCenter):
+    Analytics
+#enddefine
+
 #define(body):
 
 <div id="analytics-overview" class="content t:center">
     <div class="m">
-        <h2 class="m:t:zero">Metrics</h2>
-        <div class="g2 g:gap:l t:center">
-            <div class="g:col2 c:background:secondary p:l r:s">
+        <div class="g1 g:gap">
+            <div class="g:col1  c:background:secondary p:l r:s">
                 <span>#svg("eye", class: "block s64 m:h:auto c:link:primary")</span>
                 <h3 class="m:t">Total page views</h3>
                 <p class="h1 m:t:zero">#(totalPageViews)</p>
             </div>
 
             #for(metric in metrics):
-            <div class="g:col1 bg2 p:l br:s border1">
-                <span>#svg(metric.icon, class: "block w64")</span>
+            <div class="g:col1 p:l r:s c:background:secondary">
+                <span>#svg(metric.icon, class: "block s64 m:h:auto")</span>
                 <h3>#(metric.name)</h3>
-                <ul class="lst:none p:zero">
+                <ul class="list:off p:zero">
                 #for(group in metric.groups):
                     <li>
-                        <span class="block left">#(group.name) - #(group.percent)%</span>
-                        <span class="block left bar-chart" style="width: #(group.percent)%;"><span class="p:s"></span></span>
+                        <span class="block t:left">#(group.name) - #(group.percent)%</span>
+                        <span class="block t:left bar-chart" style="width: #(group.percent)%;"><span class="p:s"></span></span>
                     </li>
                 #endfor
                 </ul>
