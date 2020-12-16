@@ -47,8 +47,8 @@ struct AnalyticsMiddleware: Middleware {
                                     deviceModel: ua.device?.model,
                                     cpu: ua.cpu?.identifier)
 
-        return log.create(on: req.db).flatMap { _ in
-            next.respond(to: req)
+        return next.respond(to: req).flatMap { response in
+            log.create(on: req.db).map { response }
         }
     }
 }

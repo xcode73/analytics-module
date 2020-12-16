@@ -18,6 +18,8 @@ final class AnalyticsRouter: ViperRouter {
         let modulePath = routes.grouped(AnalyticsModule.pathComponent)
         let logs = modulePath.grouped(AnalyticsLogModel.pathComponent)
         adminLog.setupListRoute(on: logs)
+        adminLog.setupGetRoute(on: logs)
+        
         modulePath.get("overview", use: adminOverview.overviewView)
     }
 

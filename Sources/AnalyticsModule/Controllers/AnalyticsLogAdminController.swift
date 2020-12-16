@@ -8,27 +8,21 @@
 import Fluent
 import FeatherCore
 
-struct AnalyticsLogAdminController: ListViewController {
-    
+struct AnalyticsLogAdminController: ListViewController, GetViewController {    
     typealias Module = AnalyticsModule
     typealias Model = AnalyticsLogModel
 
+    var getView: String { "\(Module.name.capitalized)/Admin/\(Model.name.capitalized)/View" }
     var listView: String { "\(Module.name.capitalized)/Admin/\(Model.name.capitalized)/List" }
 
     var listAllowedOrders: [FieldKey] = [
         Model.FieldKeys.date,
         Model.FieldKeys.path,
-        Model.FieldKeys.language,
-        Model.FieldKeys.region,
-        Model.FieldKeys.osName,
-        Model.FieldKeys.osVersion,
-        Model.FieldKeys.browserName,
-        Model.FieldKeys.browserVersion,
     ]
 
-    func searchList(using qb: QueryBuilder<Model>, for searchTerm: String) {
-        qb.filter(\.$path ~~ searchTerm)
-        qb.filter(\.$osName ~~ searchTerm)
-        qb.filter(\.$browserName ~~ searchTerm)
+    var listDefaultSort: ListSort { .desc }
+
+    func listQuery(search: String, queryBuilder: QueryBuilder<AnalyticsLogModel>, req: Request) {
+        queryBuilder.filter(\.$path ~~ search)
     }
 }
