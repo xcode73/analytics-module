@@ -27,6 +27,7 @@ final class AnalyticsModule: ViperModule {
         app.hooks.register("admin", use: (router as! AnalyticsRouter).adminRoutesHook)
         app.hooks.register("frontend-middlewares", use: frontendMiddlewaresHook)
         app.hooks.register("leaf-admin-menu", use: leafAdminMenuHook)
+        app.hooks.register("user-permission-install", use: userPermissionInstallHook)
     }
 
     // MARK: - hooks
@@ -35,6 +36,7 @@ final class AnalyticsModule: ViperModule {
         [
             "name": "Analytics",
             "icon": "pie-chart",
+            "permission": "analytics.module.access",
             "items": LeafData.array([
                 [
                     "url": "/admin/analytics/overview/",
@@ -43,6 +45,7 @@ final class AnalyticsModule: ViperModule {
                 [
                     "url": "/admin/analytics/logs/",
                     "label": "Logs",
+                    "permission": "analytics.logs.list",
                 ],
             ])
         ]
