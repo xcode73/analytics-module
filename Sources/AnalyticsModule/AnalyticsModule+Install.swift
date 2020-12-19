@@ -17,6 +17,12 @@ extension AnalyticsModule {
                 "context": AnalyticsLogModel.name.lowercased(),
                 "action": "list",
                 "name": "List analytics logs",
+            ],
+            [
+                "module": Self.name.lowercased(),
+                "context": AnalyticsLogModel.name.lowercased(),
+                "action": "get",
+                "name": "Get analytics log details",
             ]
         ]
         //AnalyticsLogModel.permissions

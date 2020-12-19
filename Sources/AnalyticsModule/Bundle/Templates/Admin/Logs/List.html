@@ -20,12 +20,20 @@
     #for(item in list.items):
 <tr>
     <td class="td:left m:h:s">
-        <a href="#($req.url.path)#(item.id)/">#(item.path)</a>
+        #if(UserHasPermission(table.key + ".get")):
+            <a href="#($req.url.path)#(item.id)/">#(item.path)</a>
+        #else:
+            #(item.path)
+        #endif
     </td>
     <td class="td:left m:h:s">
-        <a href="#($req.url.path)#(item.id)/">
+        #if(UserHasPermission(table.key + ".get")):
+            <a href="#($req.url.path)#(item.id)/">
+                #Date(timeStamp: item.date, fixedFormat: $app.dateFormats.full, timeZone: $app.timezone)
+            </a>
+        #else:
             #Date(timeStamp: item.date, fixedFormat: $app.dateFormats.full, timeZone: $app.timezone)
-        </a>
+        #endif
     </td>
 </tr>
     #endfor
