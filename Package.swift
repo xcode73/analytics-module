@@ -13,7 +13,6 @@ var deps: [Package.Dependency] = [
 var targets: [Target] = [
     .target(name: "AnalyticsModule", dependencies: [
         .product(name: "FeatherCore", package: "feather-core"),
-        .product(name: "FeatherCore", package: "feather-core"),
         .product(name: "UAParserSwift", package: "UAParserSwift"),
         .product(name: "ALanguageParser", package: "ALanguageParser"),
         .product(name: "SQLKit", package: "sql-kit"),
