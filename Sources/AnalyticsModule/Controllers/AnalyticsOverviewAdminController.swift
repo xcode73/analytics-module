@@ -16,19 +16,19 @@ struct AnalyticsOverviewAdminController {
         let count: Int
     }
 
-    struct MetricsGroup: LeafDataRepresentable {
+    struct MetricsGroup: TemplateDataRepresentable {
         let icon: String
         let name: String
         let groups: [GroupCount]
         
         var total: Int { groups.reduce(0, { $0 + $1.count }) }
         
-        var leafData: LeafData {
+        var templateData: TemplateData {
             .dictionary([
                 "icon": icon,
                 "name": name,
                 "groups": groups.sorted(by: { $0.count > $1.count })
-                    .map { group in LeafData.dictionary([
+                    .map { group in TemplateData.dictionary([
                         "name": group.name,
                         "count": group.count,
                         "percent": String(format: "%.0f", Double(group.count) / Double(total) * 100),
@@ -57,9 +57,9 @@ struct AnalyticsOverviewAdminController {
         .flatMap { metrics in
             let totalPageViews = AnalyticsLogModel.query(on: req.db).count()
             return totalPageViews.flatMap { totalPageViews in
-                return req.leaf.render(template: "Analytics/Admin/Overview", context: [
+                return req.tau.render(template: "Analytics/Admin/Overview", context: [
                     "totalPageViews": .int(totalPageViews),
-                    "metrics": .array(metrics.compactMap { $0?.leafData }),
+                    "metrics": .array(metrics.compactMap { $0?.templateData }),
                 ])
             }
         }

@@ -24,20 +24,20 @@ final class AnalyticsModule: ViperModule {
     }
 
     func boot(_ app: Application) throws {
-        app.hooks.register("admin", use: (router as! AnalyticsRouter).adminRoutesHook)
+        app.hooks.register("admin-routes", use: (router as! AnalyticsRouter).adminRoutesHook)
         app.hooks.register("frontend-middlewares", use: frontendMiddlewaresHook)
-        app.hooks.register("leaf-admin-menu", use: leafAdminMenuHook)
+        app.hooks.register("template-admin-menu", use: templateAdminMenuHook)
         app.hooks.register("user-permission-install", use: userPermissionInstallHook)
     }
 
     // MARK: - hooks
 
-    func leafAdminMenuHook(args: HookArguments) -> LeafDataRepresentable {
+    func templateAdminMenuHook(args: HookArguments) -> TemplateDataRepresentable {
         [
             "name": "Analytics",
             "icon": "pie-chart",
             "permission": "analytics.module.access",
-            "items": LeafData.array([
+            "items": TemplateData.array([
                 [
                     "url": "/admin/analytics/overview/",
                     "label": "Overview",

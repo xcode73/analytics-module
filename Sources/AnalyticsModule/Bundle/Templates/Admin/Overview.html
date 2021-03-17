@@ -1,22 +1,44 @@
 #define(css):
-\#analytics-overview svg {
-    color: \#fa3ebe;
+#analytics-overview svg {
+    color: #fa3ebe;
 }
-\#analytics-overview .bar-chart {
-    background: \#21a9ff;
-    background: -webkit-linear-gradient(to right, \#12c2e9, \#21a9ff);
-    background: linear-gradient(to right, \#12c2e9, \#21a9ff);
-    color: \#000;
+#analytics-overview .card {
+    margin-bottom: var(--space-3xl);
+}
+#analytics-overview .card .content svg {
+    width: var(--font-size-3xl);
+    height: var(--font-size-3xl);
+    color: var(--color-1);
+    position: absolute;
+    top: var(--space);
+    right: var(--space);
+}
+#analytics-overview .grid-2 {
+    color: var(--text-color-2);
+    grid-template-columns: auto 1fr;
+    position: relative;
+    font-size: var(--font-size-xs);
+    margin: var(--space-xs);
+    margin-top: 0;
+}
+#analytics-overview .bar-chart {
+    display: block;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background: #21a9ff;
+    background: -webkit-linear-gradient(to right, #12c2e9, #21a9ff);
+    background: linear-gradient(to right, #12c2e9, #21a9ff);
+    color: #000;
 }
 @media (prefers-color-scheme: dark) {
-    \#analytics-overview svg {
-        color: \#21a9ff;
+    #analytics-overview svg {
+        color: #21a9ff;
     }
-    \#analytics-overview .bar-chart {
-        background: \#f80759;
-        background: -webkit-linear-gradient(to right, \#f80759, \#fa3ebe);
-        background: linear-gradient(to right, \#f80759, \#fa3ebe);
-        color: \#fff;
+    #analytics-overview .bar-chart {
+        background: #f80759;
+        background: -webkit-linear-gradient(to right, #f80759, #fa3ebe);
+        background: linear-gradient(to right, #f80759, #fa3ebe);
+        color: #fff;
     }
 }
 #enddefine
@@ -29,35 +51,38 @@
 
 <div id="analytics-overview" class="container">
 
-    <header class="margin-bottom">
-        <h1 class="margin-top-zero">Analytics</h1>
-        <p class="margin-top-zero">Overview</p>
+    <header class="lead">
+        <h1>Analytics</h1>
+        <p>Overview</p>
     </header>
-    <section>
-
-        <div class="padding border-radius-s background margin-bottom border-xs border-color-2">
-            <span>#svg("eye", class: "size")</span>
-            <h2 class="margin-top-zero">Total page views</h2>
-            <p class="h1 margin-top-zero margin-bottom-s">#(totalPageViews)</p>
+    <section>        
+        <div class="card">
+            <div class="content">
+                <span>#svg("eye")</span>
+                <h2>#(totalPageViews) page views</h2>
+                <p class="note">Total number of unique page views</p>
+            </div>
         </div>
 
         #for(metric in metrics):
-        <div class="padding border-radius-s background margin-bottom border-xs border-color-2">
-            <span>#svg(metric.icon, class: "size")</span>
-            <h2 class="margin-top-zero margin-bottom-s">#(metric.name)</h2>
-            <ul class="list-style-off">
-            #for(group in metric.groups):
-                <li class="margin-bottom-s">
-                    <div class="grid-2" style="grid-template-columns: 1fr 32px;">
-                        <div class="grid-col1">#(group.name) &middot; #(group.count)</div>
-                        <div class="grid-col1 text-align-right">#(group.percent)%</div>
-                    </div>
-                    <span class="displayblock border-radius-xs bar-chart" style="width: #(group.percent)%;">
-                        <span class="padding-s"></span>
+        <div class="card">
+            <div class="content">
+                <span>#svg(metric.icon)</span>
+                <h2>#(metric.name)</h2>
+                
+
+                #for(group in metric.groups):
+                    <span class="bar-chart" style="width: #(group.percent)%;">
+                        <span></span>
                     </span>
-                </li>
-            #endfor
-            </ul>
+                    <div class="grid-2">
+                        <div>#(group.count) &middot; #(group.name)</div>
+                        <div class="right">#(group.percent)%</div>
+                    </div>
+                #endfor
+
+                <p class="note center">#(metric.total) &middot; total</p>
+            </div>
         </div>
         #endfor
     </section>

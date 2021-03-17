@@ -7,9 +7,9 @@
 
 import FeatherCore
 
-extension AnalyticsLogModel: LeafDataRepresentable {
+extension AnalyticsLogModel: TemplateDataRepresentable {
 
-    var leafData: LeafData {
+    var templateData: TemplateData {
         .dictionary([
             "id": id,
             "date": date.timeIntervalSinceReferenceDate,
