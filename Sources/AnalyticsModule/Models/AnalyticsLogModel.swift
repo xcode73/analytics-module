@@ -7,11 +7,11 @@
 
 import FeatherCore
 
-final class AnalyticsLogModel: ViperModel {
-
+final class AnalyticsLogModel: FeatherModel {
     typealias Module = AnalyticsModule
 
-    static let name = "logs"
+    static let modelKey: String = "logs"
+    static let name: FeatherModelName = "Log"
 
     struct FieldKeys {
         static var date: FieldKey { "date" }
@@ -121,5 +121,40 @@ final class AnalyticsLogModel: ViperModel {
     }
     
 
+    // MARK: - template data
     
+    var templateData: TemplateData {
+        .dictionary([
+            "id": id,
+            "date": date.timeIntervalSinceReferenceDate,
+            "session": session,
+            "method": method,
+            "url": url,
+            "headers": headers,
+            "ip": ip,
+            "path": path,
+            "referer": referer,
+            "origin": origin,
+            "language": language,
+            "region": region,
+            "os": [
+                "name": osName,
+                "version": osVersion,
+            ],
+            "browser": [
+                "name": browserName,
+                "version": browserVersion,
+            ],
+            "engine": [
+                "name": engineName,
+                "version": engineVersion,
+            ],
+            "device": [
+                "vendor": deviceVendor,
+                "type": deviceType,
+                "model": deviceModel,
+            ],
+            "cpu": cpu,
+        ])
+    }
 }
