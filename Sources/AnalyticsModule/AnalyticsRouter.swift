@@ -9,7 +9,7 @@ import FeatherCore
 
 struct AnalyticsRouter: RouteCollection {
 
-//    let adminOverview = AnalyticsOverviewAdminController()
+    let adminController = AnalyticsAdminController()
     let logController = AnalyticsLogAdminController()
 
     func boot(routes: RoutesBuilder) throws {
@@ -27,7 +27,7 @@ struct AnalyticsRouter: RouteCollection {
         logController.setupListRoute(on: logRoutes)
         logController.setupGetRoute(on: logRoutes)
 
-//        modulePath.get("overview", use: adminOverview.overviewView)
+        moduleRoutes.get("overview", use: adminController.overviewView)
     }
     
     func apiAdminRoutesHook(args: HookArguments) {

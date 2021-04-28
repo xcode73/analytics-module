@@ -1,5 +1,5 @@
 //
-//  AnalyticsOverviewAdminController.swift
+//  AnalyticsAdminController.swift
 //  AnalyticsModule
 //
 //  Created by Tibor Bodecs on 2020. 11. 19..
@@ -9,7 +9,7 @@ import Fluent
 import FeatherCore
 import SQLKit
 
-struct AnalyticsOverviewAdminController {
+struct AnalyticsAdminController {
 
     struct GroupCount: Decodable {
         let name: String
@@ -57,7 +57,7 @@ struct AnalyticsOverviewAdminController {
         .flatMap { metrics in
             let totalPageViews = AnalyticsLogModel.query(on: req.db).count()
             return totalPageViews.flatMap { totalPageViews in
-                return req.tau.render(template: "Analytics/Admin/Overview", context: [
+                return req.tau.render(template: "Analytics/Overview", context: [
                     "totalPageViews": .int(totalPageViews),
                     "metrics": .array(metrics.compactMap { $0?.templateData }),
                 ])

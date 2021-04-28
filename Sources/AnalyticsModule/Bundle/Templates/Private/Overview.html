@@ -43,8 +43,13 @@
 }
 #enddefine
 
-#define(toolbarCenter):
+#define(title):
     Analytics
+#enddefine
+
+#define(breadcrumb):
+    <a href="/admin/analytics/">Analytics</a>
+    <a href="/admin/analytics/overview/" class="selected">Overview</a>
 #enddefine
 
 #define(body):
@@ -89,4 +94,4 @@
 </div>
 #enddefine
 
-#inline("Admin/Index")
+#inline("System/Admin/Index")
