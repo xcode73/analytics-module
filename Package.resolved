@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/vapor/async-kit.git",
         "state": {
           "branch": null,
-          "revision": "5760c79afb8ebc24fd3251fdd9724af225fdf1f9",
-          "version": "1.3.0"
+          "revision": "c1de408100a2f2e4ab2ea06512e8635bc1a59144",
+          "version": "1.3.1"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/vapor/console-kit.git",
         "state": {
           "branch": null,
-          "revision": "08f36a30e0893e6a52fefbf1c2db4a6bc1288ba2",
-          "version": "4.2.5"
+          "revision": "cfe8bcd58f74ffecb4f536d8237de146b634ecd3",
+          "version": "4.2.6"
         }
       },
       {
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/feathercms/feather-core",
         "state": {
           "branch": "main",
-          "revision": "283b16bb5f1cdef0a54f1cd782d61a3a3c59dc9d",
+          "revision": "62db07bc36c676f1e2add17cf01d2af26c880143",
           "version": null
         }
       },
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/vapor/fluent-kit.git",
         "state": {
           "branch": null,
-          "revision": "9d47c328bf83999968c12a3bc94ead1d706ad4a9",
-          "version": "1.11.0"
+          "revision": "b985e3e6e75843cfdc0c4daf75e50d0dae211202",
+          "version": "1.11.1"
         }
       },
       {
@@ -132,8 +132,8 @@
         "repositoryURL": "https://github.com/vapor/sql-kit.git",
         "state": {
           "branch": null,
-          "revision": "2e1ffbfa5ec6c87f6c932ecebbc11c7a5bc0115d",
-          "version": "3.8.1"
+          "revision": "07f3fc3b9179fce604a0c1672eaf8502e66a4af4",
+          "version": "3.8.2"
         }
       },
       {
@@ -195,8 +195,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
-          "revision": "3be4e0980075de10a4bc8dee07491d49175cfd7a",
-          "version": "2.27.0"
+          "revision": "21782f3bdc9581148d38d0ccaab6ec952ccda56b",
+          "version": "2.28.0"
         }
       },
       {

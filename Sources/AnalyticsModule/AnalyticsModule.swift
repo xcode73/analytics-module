@@ -17,57 +17,40 @@ final class AnalyticsModule: FeatherModule {
 
     func boot(_ app: Application) throws {
         app.migrations.add(AnalyticsMigration_v1_0_0())
-        
+
         let router = AnalyticsRouter()
         try router.boot(routes: app.routes)
-        app.hooks.register("admin-routes", use: router.adminRoutesHook)
-        app.hooks.register("frontend-middlewares", use: frontendMiddlewaresHook)
-        app.hooks.register("template-admin-menu", use: templateAdminMenuHook)
-        app.hooks.register("user-permission-install", use: userPermissionInstallHook)
+        app.hooks.register(.adminRoutes, use: router.adminRoutesHook)
+        app.hooks.register(.apiAdminRoutes, use: router.apiAdminRoutesHook)
+        
+        app.hooks.register(.adminMenu, use: adminMenuHook)
+        app.hooks.register(.webMiddlewares, use: webMiddlewaresHook)
+        app.hooks.register(.installPermissions, use: installPermissionsHook)
     }
 
     // MARK: - hooks
 
-    func templateAdminMenuHook(args: HookArguments) -> TemplateDataRepresentable {
-        [
-            "name": "Analytics",
-            "icon": "pie-chart",
-            "permission": "analytics.module.access",
-            "items": TemplateData.array([
-                [
-                    "url": "/admin/analytics/overview/",
-                    "label": "Overview",
-                ],
-                [
-                    "url": "/admin/analytics/logs/",
-                    "label": "Logs",
-                    "permission": "analytics.logs.list",
-                ],
-            ])
-        ]
+    func adminMenuHook(args: HookArguments) -> HookObjects.AdminMenu {
+        .init(key: "analytics",
+              item: .init(icon: "analytics", link: Self.adminLink, permission: Self.permission(for: .custom("admin")).identifier),
+              children: [
+                .init(link: .init(label: "Overview", url: "/admin/analytics/overview/")),
+                .init(link: .init(label: "Logs", url: "/admin/analytics/logs/"), permission: nil),
+              ])
     }
 
-    func frontendMiddlewaresHook(args: HookArguments) -> [Middleware] {
-        [AnalyticsMiddleware()]
+    func webMiddlewaresHook(args: HookArguments) -> [Middleware] {
+        [
+            AnalyticsMiddleware()
+        ]
     }
     
-    func userPermissionInstallHook(args: HookArguments) -> [[String: Any]] {
-        []
-//        AnalyticsModule.permissions +
-//        [
-//            [
-//                "module": Self.name.lowercased(),
-//                "context": AnalyticsLogModel.name.lowercased(),
-//                "action": "list",
-//                "name": "List analytics logs",
-//            ],
-//            [
-//                "module": Self.name.lowercased(),
-//                "context": AnalyticsLogModel.name.lowercased(),
-//                "action": "get",
-//                "name": "Get analytics log details",
-//            ]
-//        ]
-        //AnalyticsLogModel.permissions
+    func installPermissionsHook(args: HookArguments) -> [PermissionCreateObject] {
+        var permissions: [PermissionCreateObject] = [
+            Self.hookInstallPermission(for: .custom("admin"))
+        ]
+        permissions += AnalyticsLogModel.hookInstallPermissions()
+        
+        return permissions
     }
 }

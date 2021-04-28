@@ -5,6 +5,7 @@
 //  Created by Tibor Bodecs on 2020. 11. 19..
 //
 
+import Fluent
 import FeatherCore
 
 final class AnalyticsLogModel: FeatherModel {
@@ -38,6 +39,8 @@ final class AnalyticsLogModel: FeatherModel {
         static var deviceType: FieldKey { "device_type" }
         static var deviceModel: FieldKey { "device_model" }
         static var cpu: FieldKey { "cpu" }
+        
+        static var responseCode: FieldKey { "response_code" }
     }
 
     // MARK: - fields
@@ -67,6 +70,8 @@ final class AnalyticsLogModel: FeatherModel {
     @Field(key: FieldKeys.deviceModel) var deviceModel: String?
     @Field(key: FieldKeys.cpu) var cpu: String?
 
+    @Field(key: FieldKeys.responseCode) var responseCode: String
+
     init() { }
 
     init(id: AnalyticsLogModel.IDValue? = nil,
@@ -92,7 +97,8 @@ final class AnalyticsLogModel: FeatherModel {
          deviceVendor: String? = nil,
          deviceType: String? = nil,
          deviceModel: String? = nil,
-         cpu: String? = nil)
+         cpu: String? = nil,
+         responseCode: String)
     {
         self.id = id
         self.date = date
@@ -118,43 +124,51 @@ final class AnalyticsLogModel: FeatherModel {
         self.deviceType = deviceType
         self.deviceModel = deviceModel
         self.cpu = cpu
+        self.responseCode = responseCode
     }
     
+    // MARK: - query
 
-    // MARK: - template data
+    static func defaultSort() -> FieldSort {
+        .desc
+    }
     
-    var templateData: TemplateData {
-        .dictionary([
-            "id": id,
-            "date": date.timeIntervalSinceReferenceDate,
-            "session": session,
-            "method": method,
-            "url": url,
-            "headers": headers,
-            "ip": ip,
-            "path": path,
-            "referer": referer,
-            "origin": origin,
-            "language": language,
-            "region": region,
-            "os": [
-                "name": osName,
-                "version": osVersion,
-            ],
-            "browser": [
-                "name": browserName,
-                "version": browserVersion,
-            ],
-            "engine": [
-                "name": engineName,
-                "version": engineVersion,
-            ],
-            "device": [
-                "vendor": deviceVendor,
-                "type": deviceType,
-                "model": deviceModel,
-            ],
-            "cpu": cpu,
-        ])
+    static func allowedOrders() -> [FieldKey] {
+        [
+            FieldKeys.date,
+            FieldKeys.path,
+            FieldKeys.responseCode,
+        ]
+    }
+    
+    static func search(_ term: String) -> [ModelValueFilter<AnalyticsLogModel>] {
+        [
+            \.$path ~~ term,
+            \.$responseCode ~~ term,
+        ]
+    }
+    
+    // MARK: - info
+    
+    /// disable create & delete operations
+    static func info(_ req: Request) -> ModelInfo {
+        let list = req.checkPermission(for: permission(for: .list))
+        let get = req.checkPermission(for: permission(for: .get))
+        let create = false
+        let update = false
+        let patch = false
+        let delete = false
+    
+        let permissions = ModelInfo.AvailablePermissions(list: list, get: get, create: create, update: update, patch: patch, delete: delete)
+        return ModelInfo(idKey: modelKey,
+                         idParamKey: idParamKey,
+                         name: .init(singular: name.singular, plural: name.plural),
+                         assetPath: assetPath,
+                         module: .init(idKey: Module.moduleKey, name: Module.name, assetPath: Module.assetPath),
+                         permissions: permissions,
+                         isSearchable: isSearchable,
+                         allowedOrders: allowedOrders().map(\.description),
+                         defaultOrder: allowedOrders().first?.description,
+                         defaultSort: defaultSort().rawValue)
     }
 }

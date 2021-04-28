@@ -35,6 +35,8 @@ struct AnalyticsMigration_v1_0_0: Migration {
             .field(AnalyticsLogModel.FieldKeys.deviceType, .string)
             .field(AnalyticsLogModel.FieldKeys.deviceModel, .string)
             .field(AnalyticsLogModel.FieldKeys.cpu, .string)
+
+            .field(AnalyticsLogModel.FieldKeys.responseCode, .string, .required)
             .create()
     }
 
