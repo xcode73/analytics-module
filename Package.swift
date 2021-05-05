@@ -11,13 +11,13 @@ var deps: [Package.Dependency] = [
 ]
 
 var targets: [Target] = [
-    .target(name: "AnalyticsModuleApi"),
+    .target(name: "AnalyticsApi"),
     .target(name: "AnalyticsModule", dependencies: [
         .product(name: "FeatherCore", package: "feather-core"),
         .product(name: "UAParserSwift", package: "UAParserSwift"),
         .product(name: "ALanguageParser", package: "ALanguageParser"),
         .product(name: "SQLKit", package: "sql-kit"),
-        .target(name: "AnalyticsModuleApi")
+        .target(name: "AnalyticsApi")
     ],
     resources: [
         .copy("Bundle"),
@@ -38,6 +38,7 @@ if isLocalTestMode {
         ]),
         .testTarget(name: "AnalyticsModuleTests", dependencies: [
             .target(name: "AnalyticsModule"),
+            .product(name: "FeatherTest", package: "feather-core")
         ])
     ])
 }

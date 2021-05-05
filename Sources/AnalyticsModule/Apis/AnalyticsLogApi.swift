@@ -5,7 +5,7 @@
 //  Created by Tibor Bodecs on 2021. 04. 28..
 //
 
-import AnalyticsModuleApi
+import AnalyticsApi
 import FeatherCore
 
 extension LogListObject: Content {}

@@ -5,16 +5,14 @@
 //  Created by Tibor Bodecs on 2020. 08. 23..
 //
 
-import XCTest
+import FeatherTest
+import AnalyticsApi
 @testable import AnalyticsModule
 
-final class AnalyticsModuleTests: XCTestCase {
+
+final class AnalyticsModuleTests: FeatherTestCase {
     
-    static var allTests = [
-        ("testExample", testExample),
-    ]
-    
-    func testExample() {
-        XCTAssertTrue(true)
+    override class func testModules() -> [FeatherModule] {
+        [AnalyticsModule()]
     }
 }
