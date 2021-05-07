@@ -12,7 +12,11 @@ import ALanguageParser
 struct AnalyticsMiddleware: Middleware {
 
     func respond(to req: Request, chainingTo next: Responder) -> EventLoopFuture<Response> {
-        next.respond(to: req).flatMap { response in
+        /// NOTE: frontend middlewares are enabled for install paths as well, so we have to skip those...
+        guard !req.url.path.hasPrefix("/install/") else {
+            return next.respond(to: req)
+        }
+        return next.respond(to: req).flatMap { response in
             let referer = req.headers.first(name: "referer")
             let origin = req.headers.first(name: "origin")
             let ip = req.headers.first(name: "X-Forwarded-For")

@@ -7,14 +7,10 @@
 
 import FeatherCore
 
-struct AnalyticsRouter: RouteCollection {
+struct AnalyticsRouter: FeatherRouter {
 
     let adminController = AnalyticsAdminController()
     let logController = AnalyticsLogAdminController()
-
-    func boot(routes: RoutesBuilder) throws {
-        
-    }
     
     func adminRoutesHook(args: HookArguments) {
         let adminRoutes = args.routes
