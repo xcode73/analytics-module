@@ -14,8 +14,8 @@ struct AnalyticsRouter: FeatherRouter {
 
     func adminRoutesHook(args: HookArguments) {
     
-        logAdminController.setupListRoutes(args.routes)
-        logAdminController.setupDetailRoutes(args.routes)
+        logAdminController.setUpListRoutes(args.routes)
+        logAdminController.setUpDetailRoutes(args.routes)
 
         args.routes.grouped("analytics").get("overview", use: adminController.overviewView)
         
@@ -29,8 +29,8 @@ struct AnalyticsRouter: FeatherRouter {
     }
     
     func apiRoutesHook(args: HookArguments) {
-        logApiController.setupListRoutes(args.routes)
-        logApiController.setupDetailRoutes(args.routes)
+        logApiController.setUpListRoutes(args.routes)
+        logApiController.setUpDetailRoutes(args.routes)
     }
 }
 
