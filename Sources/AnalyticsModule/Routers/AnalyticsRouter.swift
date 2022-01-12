@@ -20,10 +20,12 @@ struct AnalyticsRouter: FeatherRouter {
         args.routes.grouped("analytics").get("overview", use: adminController.overviewView)
         
         args.routes.get("analytics") { req -> Response in
-            let template = AdminModulePageTemplate(.init(title: "Analytics", message: "module information", links: [
-                .init(label: "Overview", path: "/admin/analytics/overview/"),
-                .init(label: "Logs", path: "/admin/analytics/logs/"),
-            ]))
+            let template = AdminModulePageTemplate(.init(title: "Analytics",
+                                                         message: "module information",
+                                                         navigation: [
+                                                            .init(label: "Overview", path: "/admin/analytics/overview/"),
+                                                            .init(label: "Logs", path: "/admin/analytics/logs/"),
+                                                         ]))
             return req.templates.renderHtml(template)
         }
     }
