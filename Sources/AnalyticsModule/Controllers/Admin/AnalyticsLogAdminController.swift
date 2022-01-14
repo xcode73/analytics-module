@@ -26,7 +26,7 @@ struct AnalyticsLogAdminController: AdminListController, AdminDetailController {
         ]
     }
     
-    func detailFields(for model: AnalyticsLogModel) -> [FieldContext] {
+    func detailFields(for model: AnalyticsLogModel) -> [DetailContext] {
         [
             .init("id", model.uuid.string),
             .init("path", model.path),
