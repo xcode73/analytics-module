@@ -11,7 +11,7 @@ import ALanguageParser
 struct AnalyticsLogMiddleware: AsyncMiddleware {
 
     func respond(to req: Request, chainingTo next: AsyncResponder) async throws -> Response {
-        /// NOTE: frontend middlewares are enabled for install paths as well, so we have to skip those...
+        /// @NOTE: frontend middlewares are enabled for install paths as well, so we have to skip those...
         guard !req.url.path.hasPrefix("/install/") else {
             return try await next.respond(to: req)
         }
@@ -29,7 +29,7 @@ struct AnalyticsLogMiddleware: AsyncMiddleware {
         for header in req.headers {
             headers[header.name] = header.value
         }
-        /// NOTE: we should get the IP as well
+        /// @NOTE: we should get the IP as well
         let log = AnalyticsLogModel(session: req.session.id?.string,
                                     method: req.method.rawValue,
                                     url: req.url.string,
