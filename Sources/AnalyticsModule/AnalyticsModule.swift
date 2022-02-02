@@ -26,10 +26,10 @@ struct AnalyticsModule: FeatherModule {
         app.hooks.register(.webMiddlewares, use: webMiddlewaresHook)
     }
     
-    func adminWidgetsHook(args: HookArguments) -> [TemplateRepresentable] {
+    func adminWidgetsHook(args: HookArguments) -> [OrderedHookResult<TemplateRepresentable>] {
         if args.req.checkPermission(Analytics.permission(for: .detail)) {
             return [
-                AnalyticsAdminWidgetTemplate(),
+                .init(AnalyticsAdminWidgetTemplate(), order: 300),
             ]
         }
         return []
