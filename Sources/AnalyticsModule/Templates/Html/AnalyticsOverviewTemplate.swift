@@ -6,6 +6,7 @@
 //
 
 import SwiftHtml
+import FeatherCore
 
 struct AnalyticsOverviewTemplate: TemplateRepresentable {
     
@@ -17,15 +18,11 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
     
     @TagBuilder
     func render(_ req: Request) -> Tag {
-        AdminIndexTemplate(.init(title: "")) {
-            Div {
-                Header {
-                    H1("Analytics")
-                    P("Overview")
-                }
-                .class("lead")
-                
-                Section {
+        AdminIndexTemplate(.init(title: "Analytics")) {
+            Div {                
+                Div {
+                    LeadTemplate(.init(title: "Analytics", excerpt: "Overview")).render(req)
+
                     Div {
                         Div {
                             Span {
@@ -74,10 +71,10 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                         .class("card")
                     }
                 }
-                
+                .class("container")
             }
             .id("analytics-overview")
-            .class("container")
+            .class("wrapper")
         }
         .render(req)
     }
