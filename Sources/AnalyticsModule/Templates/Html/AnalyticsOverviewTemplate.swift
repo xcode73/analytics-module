@@ -6,7 +6,9 @@
 //
 
 import SwiftHtml
+import SwiftSvg
 import FeatherCore
+import FeatherIcons
 
 struct AnalyticsOverviewTemplate: TemplateRepresentable {
     
@@ -26,7 +28,7 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                     Div {
                         Div {
                             Span {
-//                                Img(src: "/img/svg/eye.svg", alt: "Total page views")
+                                Svg.icon(.eye)
                             }
                             H2("\(context.totalPageViews) page views")
                             P("Total number of unique page views")
@@ -40,7 +42,7 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                         Div {
                             Div {
                                 Span {
-//                                    Img(src: "/img/svg/\(metric.icon).svg", alt: metric.name)
+                                    Svg.icon(metric.icon) ?? Svg.icon(.eye)
                                 }
                                 H2(metric.name)
                                 
