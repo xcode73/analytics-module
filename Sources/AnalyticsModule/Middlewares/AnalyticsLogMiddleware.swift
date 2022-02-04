@@ -15,6 +15,9 @@ struct AnalyticsLogMiddleware: AsyncMiddleware {
         guard !req.url.path.hasPrefix("/install/") else {
             return try await next.respond(to: req)
         }
+        guard !req.url.path.hasPrefix("/admin/") else {
+            return try await next.respond(to: req)
+        }
         let response = try await next.respond(to: req)
         
         let referer = req.headers.first(name: "referer")
