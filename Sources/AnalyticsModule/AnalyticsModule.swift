@@ -33,7 +33,7 @@ struct AnalyticsModule: FeatherModule {
     
     func adminCssHook(args: HookArguments) -> [OrderedHookResult<String>] {
         [
-            .init("/css/analytics/style.css", order: 420)
+            .init("/css/analytics/admin.css", order: 42)
         ]
     }
     
