@@ -6,11 +6,13 @@
 //
 
 import SwiftHtml
+import FeatherIcons
 
 struct AnalyticsAdminWidgetTemplate: TemplateRepresentable {
     
     @TagBuilder
     func render(_ req: Request) -> Tag {
+        Svg.icon(.barChart2)
         H2("Analytics")
         Ul {
             Li {
