@@ -21,8 +21,8 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
     @TagBuilder
     func render(_ req: Request) -> Tag {
         AdminIndexTemplate(.init(title: "Analytics")) {
-            Div {                
-                Div {
+            Wrapper {
+                Container {
                     LeadTemplate(.init(title: "Analytics", excerpt: "Overview")).render(req)
 
                     Div {
@@ -73,10 +73,8 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                         .class("card")
                     }
                 }
-                .class("container")
             }
             .id("analytics-overview")
-            .class("wrapper")
         }
         .render(req)
     }
