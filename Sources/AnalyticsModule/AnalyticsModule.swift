@@ -14,6 +14,10 @@ public extension HookName {
 
 struct AnalyticsModule: FeatherModule {
     
+    var bundleUrl: URL? {
+        Bundle.module.resourceURL?.appendingPathComponent("Bundle")
+    }
+
     let router = AnalyticsRouter()
     
     func boot(_ app: Application) throws {
@@ -22,8 +26,15 @@ struct AnalyticsModule: FeatherModule {
         app.hooks.register(.installUserPermissions, use: installUserPermissionsHook)
         app.hooks.register(.adminRoutes, use: router.adminRoutesHook)
         app.hooks.register(.apiRoutes, use: router.apiRoutesHook)
+        app.hooks.register(.adminCss, use: adminCssHook)
         app.hooks.register(.adminWidgets, use: adminWidgetsHook)
         app.hooks.register(.webMiddlewares, use: webMiddlewaresHook)
+    }
+    
+    func adminCssHook(args: HookArguments) -> [OrderedHookResult<String>] {
+        [
+            .init("/css/analytics/style.css", order: 420)
+        ]
     }
     
     func adminWidgetsHook(args: HookArguments) -> [OrderedHookResult<TemplateRepresentable>] {

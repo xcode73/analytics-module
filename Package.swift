@@ -28,7 +28,7 @@ let package = Package(
             .target(name: "AnalyticsApi")
         ],
         resources: [
-//            .copy("Bundle"),
+            .copy("Bundle"),
         ]),
     ]
 )
