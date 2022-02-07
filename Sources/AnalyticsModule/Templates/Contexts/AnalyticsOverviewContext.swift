@@ -5,6 +5,8 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import SwiftSvg
+
 struct AnalyticsOverviewContext {
     
     struct Metrics {
@@ -15,7 +17,7 @@ struct AnalyticsOverviewContext {
             let percent: String
         }
 
-        let icon: String
+        let icon: Svg
         let name: String
         let total: Int
         let groups: [Group]

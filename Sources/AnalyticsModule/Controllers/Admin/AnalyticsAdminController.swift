@@ -6,6 +6,7 @@
 //
 
 import SQLKit
+import FeatherIcons
 
 struct AnalyticsAdminController {
 
@@ -19,7 +20,7 @@ struct AnalyticsAdminController {
     }
 
     struct MetricsGroup {
-        let icon: String
+        let icon: Svg
         let name: String
         let groups: [GroupCount]
         var total: Int { groups.reduce(0, { $0 + $1.count }) }
@@ -27,7 +28,7 @@ struct AnalyticsAdminController {
     }
 
     /// This won't work with the MongoDB driver yet, see https://github.com/vapor/fluent-kit/issues/206
-    func count(_ req: Request, icon: String, name: String, groupBy group: String) async throws -> MetricsGroup? {
+    func count(_ req: Request, icon: Svg, name: String, groupBy group: String) async throws -> MetricsGroup? {
         guard let db = req.db as? SQLDatabase else {
             return nil
         }
@@ -49,10 +50,10 @@ struct AnalyticsAdminController {
 
     func overviewView(_ req: Request) async throws -> Response {
         let totalPageViews = try await AnalyticsLogModel.query(on: req.db).count()
-        let browser = try await count(req, icon: "compass", name: "Browsers", groupBy: "browser_name")
-        let os = try await count(req, icon: "monitor",  name: "Operating systems", groupBy: "os_name")
-        let lang = try await count(req, icon: "message-square",  name: "Languages", groupBy: "language")
-        let path = try await count(req, icon: "anchor",  name: "Pages", groupBy: "path")
+        let browser = try await count(req, icon: .compass, name: "Browsers", groupBy: "browser_name")
+        let os = try await count(req, icon: .monitor,  name: "Operating systems", groupBy: "os_name")
+        let lang = try await count(req, icon: .messageSquare,  name: "Languages", groupBy: "language")
+        let path = try await count(req, icon: .anchor,  name: "Pages", groupBy: "path")
 
         let m = [browser, os, lang, path].compactMap { $0 }.map { value -> AnalyticsOverviewContext.Metrics in
             let groups = value.groups.map { g -> AnalyticsOverviewContext.Metrics.Group in

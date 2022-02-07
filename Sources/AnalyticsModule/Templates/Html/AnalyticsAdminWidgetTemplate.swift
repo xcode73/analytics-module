@@ -12,7 +12,7 @@ struct AnalyticsAdminWidgetTemplate: TemplateRepresentable {
     
     @TagBuilder
     func render(_ req: Request) -> Tag {
-        Svg.icon(.barChart2)
+        Svg.barChart2
         H2("Analytics")
         Ul {
             Li {

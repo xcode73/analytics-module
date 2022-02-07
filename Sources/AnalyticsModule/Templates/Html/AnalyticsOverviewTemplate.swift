@@ -28,7 +28,7 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                     Div {
                         Div {
                             Span {
-                                Svg.icon(.eye)
+                                Svg.eye
                             }
                             H2("\(context.totalPageViews) page views")
                             P("Total number of unique page views")
@@ -42,7 +42,7 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
                         Div {
                             Div {
                                 Span {
-                                    Svg.icon(metric.icon) ?? Svg.icon(.eye)
+                                    metric.icon
                                 }
                                 H2(metric.name)
                                 
