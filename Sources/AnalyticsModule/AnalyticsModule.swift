@@ -14,7 +14,7 @@ public extension HookName {
 
 struct AnalyticsModule: FeatherModule {
     
-    var bundleUrl: URL? {
+    static var bundleUrl: URL? {
         Bundle.module.resourceURL?.appendingPathComponent("Bundle")
     }
 
