@@ -20,7 +20,9 @@ struct AnalyticsOverviewTemplate: TemplateRepresentable {
     
     @TagBuilder
     func render(_ req: Request) -> Tag {
-        AdminIndexTemplate(.init(title: "Analytics")) {
+        AdminIndexTemplate(.init(title: "Analytics", breadcrumbs: [
+            LinkContext(label: "Analytics", dropLast: 1)
+        ])) {
             Wrapper {
                 Container {
                     LeadTemplate(.init(title: "Analytics", excerpt: "Overview")).render(req)
