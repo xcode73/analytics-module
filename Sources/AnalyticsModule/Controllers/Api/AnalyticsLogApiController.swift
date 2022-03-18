@@ -5,6 +5,10 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import Feather
+import Vapor
+import AnalyticsObjects
+
 extension Analytics.Log.List: Content {}
 extension Analytics.Log.Detail: Content {}
 

@@ -5,6 +5,10 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import Feather
+import Vapor
+import AnalyticsObjects
+
 struct AnalyticsRouter: FeatherRouter {
  
     let adminController = AnalyticsAdminController()
@@ -20,8 +24,8 @@ struct AnalyticsRouter: FeatherRouter {
         args.routes.grouped(Analytics.pathKey.pathComponent).get("overview", use: adminController.overviewView)
         
         args.routes.get(Analytics.pathKey.pathComponent) { req -> Response in
-            let template = AdminModulePageTemplate(.init(title: "Analytics",
-                                                         tag: AnalyticsAdminWidgetTemplate().render(req)))
+            let template = SystemAdminModulePageTemplate(.init(title: "Analytics",
+                                                               tag: AnalyticsAdminWidgetTemplate().render(req)))
             return req.templates.renderHtml(template)
         }
     }

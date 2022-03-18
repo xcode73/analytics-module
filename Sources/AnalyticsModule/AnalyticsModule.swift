@@ -5,8 +5,10 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
-@_exported import FeatherCore
-@_exported import AnalyticsApi
+import Feather
+import FeatherObjects
+import Vapor
+import AnalyticsObjects
 
 public extension HookName {
     //    static let permission: HookName = "permission"
@@ -23,24 +25,24 @@ struct AnalyticsModule: FeatherModule {
     func boot(_ app: Application) throws {
         app.migrations.add(AnalyticsMigrations.v1())
 
-        app.hooks.register(.installUserPermissions, use: installUserPermissionsHook)
+        app.hooks.register(.installPermissions, use: installUserPermissionsHook)
         app.hooks.register(.adminRoutes, use: router.adminRoutesHook)
         app.hooks.register(.apiRoutes, use: router.apiRoutesHook)
-        app.hooks.register(.adminCss, use: adminCssHook)
-        app.hooks.register(.adminWidgets, use: adminWidgetsHook)
+        app.hooks.register(.adminCss, use: adminCssHook, priority: 42)
+        app.hooks.register(.adminWidgets, use: adminWidgetsHook, priority: 300)
         app.hooks.register(.webMiddlewares, use: webMiddlewaresHook)
     }
     
-    func adminCssHook(args: HookArguments) -> [OrderedHookResult<String>] {
+    func adminCssHook(args: HookArguments) -> [String] {
         [
-            .init("/css/analytics/admin.css", order: 42)
+            "/css/analytics/admin.css"
         ]
     }
     
-    func adminWidgetsHook(args: HookArguments) -> [OrderedHookResult<TemplateRepresentable>] {
+    func adminWidgetsHook(args: HookArguments) -> [TemplateRepresentable] {
         if args.req.checkPermission(Analytics.permission(for: .detail)) {
             return [
-                .init(AnalyticsAdminWidgetTemplate(), order: 300),
+                AnalyticsAdminWidgetTemplate()
             ]
         }
         return []
@@ -52,7 +54,7 @@ struct AnalyticsModule: FeatherModule {
         ]
     }
     
-    func installUserPermissionsHook(args: HookArguments) -> [User.Permission.Create] {
+    func installUserPermissionsHook(args: HookArguments) -> [FeatherPermission.Create] {
         var permissions = Analytics.availablePermissions()
         permissions += Analytics.Log.availablePermissions()
         return permissions.map { .init($0) } 

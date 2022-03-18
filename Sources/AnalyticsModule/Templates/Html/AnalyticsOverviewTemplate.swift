@@ -5,24 +5,17 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import Feather
+import Vapor
 import SwiftHtml
 import SwiftSvg
-import FeatherCore
 import FeatherIcons
 
-struct AnalyticsOverviewTemplate: TemplateRepresentable {
-    
-    var context: AnalyticsOverviewContext
-    
-    init(_ context: AnalyticsOverviewContext) {
-        self.context = context
-    }
-    
-    @TagBuilder
-    func render(_ req: Request) -> Tag {
-        AdminIndexTemplate(.init(title: "Analytics", breadcrumbs: [
-            LinkContext(label: "Analytics", dropLast: 1)
-        ])) {
+final class AnalyticsOverviewTemplate: AbstractTemplate<AnalyticsOverviewContext> {
+
+    override func render(_ req: Request) -> Tag {
+//    breadcrumbs: [LinkContext(label: "Analytics", dropLast: 1)])
+        req.templateEngine.system.index(.init(title: "Analytics")) {
             Wrapper {
                 Container {
                     LeadTemplate(.init(title: "Analytics", excerpt: "Overview")).render(req)

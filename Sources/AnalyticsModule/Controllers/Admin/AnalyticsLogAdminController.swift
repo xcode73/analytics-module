@@ -5,6 +5,10 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import Feather
+import Vapor
+import AnalyticsObjects
+
 struct AnalyticsLogAdminController: AdminListController, AdminDetailController {
 
     typealias ApiModel = Analytics.Log

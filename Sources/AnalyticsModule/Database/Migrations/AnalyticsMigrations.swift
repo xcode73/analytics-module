@@ -5,6 +5,8 @@
 //  Created by Tibor Bodecs on 2021. 12. 26..
 //
 
+import Fluent
+
 struct AnalyticsMigrations {
 
     struct v1: AsyncMigration {

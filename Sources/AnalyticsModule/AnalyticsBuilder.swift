@@ -5,6 +5,8 @@
 //  Created by Tibor Bodecs on 2021. 12. 27..
 //
 
+import Feather
+
 @_cdecl("createAnalyticsModule")
 public func createAnalyticsModule() -> UnsafeMutableRawPointer {
     return Unmanaged.passRetained(AnalyticsBuilder()).toOpaque()
