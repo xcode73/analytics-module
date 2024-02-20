@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/vapor/sql-kit.git",
         "state": {
           "branch": null,
-          "revision": "9cc30f8cef132e91a07e36005612b37f918731fc",
-          "version": "3.16.0"
+          "revision": "b2f128cb62a3abfbb1e3b2893ff3ee69e70f4f0f",
+          "version": "3.28.0"
         }
       },
       {
