@@ -12,7 +12,7 @@
     {
       "identity" : "analytics-objects",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/xcode73/analytics-objects",
+      "location" : "https://github.com/xcode73/analytics-objects.git",
       "state" : {
         "branch" : "test-dev",
         "revision" : "1caed84dc1a309ebb2412d3924b82d7fa82a1028"
@@ -48,10 +48,10 @@
     {
       "identity" : "feather-core",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/xcode73/feather-core",
+      "location" : "https://github.com/xcode73/feather-core.git",
       "state" : {
         "branch" : "test-dev",
-        "revision" : "fb1399003049728d2eaa3ed28f2b5e72e767b20b"
+        "revision" : "f9d391813be3c88b04e94e350d7401f0c83e8878"
       }
     },
     {

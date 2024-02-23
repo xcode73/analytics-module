@@ -4,17 +4,17 @@ import PackageDescription
 let package = Package(
     name: "analytics-module",
     platforms: [
-        .macOS(.v10_15),
+        .macOS(.v10_15)
     ],
     products: [
-        .library(name: "AnalyticsModule", targets: ["AnalyticsModule"]),
+        .library(name: "AnalyticsModule", targets: ["AnalyticsModule"])
     ],
     dependencies: [
-        .package(url: "https://github.com/xcode73/feather-core", branch: "test-dev"),
-        .package(url: "https://github.com/xcode73/analytics-objects", branch: "test-dev"),
-        .package(url: "https://github.com/malcommac/UAParserSwift", from: "1.2.1"),
-        .package(url: "https://github.com/matsoftware/accept-language-parser", from: "1.0.0"),
-        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.28.0"),
+        .package(url: "https://github.com/xcode73/feather-core.git", branch: "test-dev"),
+        .package(url: "https://github.com/xcode73/analytics-objects.git", branch: "test-dev"),
+        .package(url: "https://github.com/malcommac/UAParserSwift.git", from: "1.2.1"),
+        .package(url: "https://github.com/matsoftware/accept-language-parser.git", from: "1.0.0"),
+        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.28.0")
     ],
     targets: [
         .target(name: "AnalyticsModule", dependencies: [
@@ -22,10 +22,10 @@ let package = Package(
             .product(name: "AnalyticsObjects", package: "analytics-objects"),
             .product(name: "UAParserSwift", package: "UAParserSwift"),
             .product(name: "ALanguageParser", package: "accept-language-parser"),
-            .product(name: "SQLKit", package: "sql-kit"),
+            .product(name: "SQLKit", package: "sql-kit")
         ],
         resources: [
-            .copy("Bundle"),
+            .copy("Bundle")
         ]),
     ],
     swiftLanguageVersions: [.v5]
