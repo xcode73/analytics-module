@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
@@ -11,10 +11,11 @@ let package = Package(
         .library(name: "AnalyticsApi", targets: ["AnalyticsApi"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/feathercms/feather-core", .branch("dev")),
-        .package(url: "https://github.com/malcommac/UAParserSwift", from: "1.2.1"),
-        .package(name: "ALanguageParser", url: "https://github.com/matsoftware/accept-language-parser", from: "1.0.0"),
-        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.0.0"),
+//        .package(url: "git@github.com:xcode73/feather-core.git", branch: "main"),
+        .package(path: "../feather-core"),
+        .package(url: "git@github.com:malcommac/UAParserSwift.git", from: "1.2.1"),
+        .package(name: "ALanguageParser", url: "git@github.com:matsoftware/accept-language-parser.git", from: "1.0.0"),
+        .package(url: "git@github.com:vapor/sql-kit.git", from: "3.30.0"),
     ],
     targets: [
         .target(name: "AnalyticsApi", dependencies: [
