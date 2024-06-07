@@ -30,7 +30,7 @@ let package = Package(
             dependencies: [
                 .product(name: "FeatherCore", package: "feather-core"),
                 .product(name: "UAParserSwift", package: "UAParserSwift"),
-                .product(name: "ALanguageParser", package: "ALanguageParser"),
+                .product(name: "ALanguageParser", package: "accept-language-parser"),
                 .product(name: "SQLKit", package: "sql-kit"),
                 .target(name: "AnalyticsApi")
             ],

@@ -19,17 +19,24 @@ let package = Package(
     ],
     targets: [
         .target(name: "AnalyticsApi", dependencies: [
-            .product(name: "FeatherCoreApi", package: "feather-core"),
-        ]),
-        .target(name: "AnalyticsModule", dependencies: [
-            .product(name: "FeatherCore", package: "feather-core"),
-            .product(name: "UAParserSwift", package: "UAParserSwift"),
-            .product(name: "ALanguageParser", package: "ALanguageParser"),
-            .product(name: "SQLKit", package: "sql-kit"),
-            .target(name: "AnalyticsApi")
-        ],
-        resources: [
-//            .copy("Bundle"),
-        ]),
+            .product(
+                name: "FeatherCoreApi",
+                package: "feather-core"
+            ),
+        ]
+        ),
+        .target(
+            name: "AnalyticsModule",
+            dependencies: [
+                .product(name: "FeatherCore", package: "feather-core"),
+                .product(name: "UAParserSwift", package: "UAParserSwift"),
+                .product(name: "ALanguageParser", package: "accept-language-parser"),
+                .product(name: "SQLKit", package: "sql-kit"),
+                .target(name: "AnalyticsApi")
+            ],
+            resources: [
+//                            .copy("Bundle"),
+            ]
+        ),
     ]
 )
