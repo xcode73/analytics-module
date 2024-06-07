@@ -11,11 +11,11 @@ let package = Package(
         .library(name: "AnalyticsApi", targets: ["AnalyticsApi"]),
     ],
     dependencies: [
-//        .package(url: "git@github.com:xcode73/feather-core.git", branch: "main"),
+//        .package(url: "https://github.com/xcode73/feather-core.git", branch: "main"),
         .package(path: "../feather-core"),
-        .package(url: "git@github.com:malcommac/UAParserSwift.git", from: "1.2.1"),
-        .package(name: "ALanguageParser", url: "git@github.com:matsoftware/accept-language-parser.git", from: "1.0.0"),
-        .package(url: "git@github.com:vapor/sql-kit.git", from: "3.30.0"),
+        .package(url: "https://github.com/malcommac/UAParserSwift.git", from: "1.2.1"),
+        .package(url: "https://github.com/matsoftware/accept-language-parser.git", from: "1.1.0"),
+        .package(url: "https://github.com/vapor/sql-kit.git", from: "3.30.0"),
     ],
     targets: [
         .target(name: "AnalyticsApi", dependencies: [
