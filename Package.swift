@@ -1,18 +1,18 @@
-// swift-tools-version:5.9
+// swift-tools-version:5.7
 import PackageDescription
+import Foundation
 
 let package = Package(
     name: "analytics-module",
     platforms: [
-       .macOS(.v12)
+        .macOS(.v10_15)
     ],
     products: [
         .library(name: "AnalyticsModule", targets: ["AnalyticsModule"]),
         .library(name: "AnalyticsApi", targets: ["AnalyticsApi"]),
     ],
     dependencies: [
-//        .package(url: "https://github.com/xcode73/feather-core.git", branch: "main"),
-        .package(path: "../feather-core"),
+        .package(url: "https://github.com/xcode73/feather-core.git", branch: "main"),
         .package(url: "https://github.com/malcommac/UAParserSwift.git", from: "1.2.1"),
         .package(url: "https://github.com/matsoftware/accept-language-parser.git", from: "1.1.0"),
         .package(url: "https://github.com/vapor/sql-kit.git", from: "3.30.0"),
